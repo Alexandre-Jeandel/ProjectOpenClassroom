@@ -17,8 +17,8 @@ data_name = 'data_prod.csv'                                       # local API
 '''
 
 #'''
-data_folder = '/home/AlexandreJeandel/ProjectOpenClassroom/'         # online API
-model_folder = '/home/AlexandreJeandel/ProjectOpenClassroom/'              # online API
+data_folder = '/home/AlexandreJeandel/ProjectOpenClassroom/data/cleaned/'         # online API
+model_folder = '/home/AlexandreJeandel/ProjectOpenClassroom/models/'              # online API
 data_name = 'data_prod.csv'                                         # online API
 #'''
 
