@@ -17,8 +17,8 @@ data_name = 'data_prod.csv'                                       # local API
 '''
 
 #'''
-data_folder = '/home/AlexandreJeandel/'         # online API
-model_folder = '/home/AlexandreJeandel/'              # online API
+data_folder = '/home/AlexandreJeandel/ProjectOpenClassroom/'         # online API
+model_folder = '/home/AlexandreJeandel/ProjectOpenClassroom/'              # online API
 data_name = 'data_prod.csv'                                         # online API
 #'''
 
@@ -52,6 +52,16 @@ for col in data_scaled.columns:
 data_scaled.iloc[:,1:] = scaler.fit_transform(data_scaled.iloc[:,1:])
 
 pipe = pickle.load(open(model_folder + model_name , 'rb'))
+
+
+@app.route('/git_update', methods=['POST'])
+def git_update():
+    repo = git.Repo('./ProjectOpenClassroom')
+    origin = repo.remotes.origin
+    repo.create_head('main',
+                     origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
+    origin.pull()
+    return '', 200
 
 # API welcome function
 @app.route("/")
