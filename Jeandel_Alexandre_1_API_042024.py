@@ -17,6 +17,7 @@ data_name = 'data_prod.csv'                                       # local API
 '''
 
 #'''
+repo_folder = '/home/AlexandreJeandel/ProjectOpenClassroom'
 data_folder = '/home/AlexandreJeandel/ProjectOpenClassroom/data/cleaned/'         # online API
 model_folder = '/home/AlexandreJeandel/ProjectOpenClassroom/models/'              # online API
 data_name = 'data_prod.csv'                                         # online API
@@ -56,7 +57,7 @@ pipe = pickle.load(open(model_folder + model_name , 'rb'))
 
 @app.route('/git_update', methods=['POST'])
 def git_update():
-    repo = git.Repo('./ProjectOpenClassroom')
+    repo = git.Repo(repo_folder)
     origin = repo.remotes.origin
     repo.create_head('main',
                      origin.refs.main).set_tracking_branch(origin.refs.main).checkout()
